@@ -18,10 +18,14 @@
 <meta property="og:image:alt" content="BSV Gestão de Obras: gestão de obras que você vê">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "BSV Gestão de Obras", "url": "https://bsvgestora.com.br/", "logo": "https://bsvgestora.com.br/img/apple-touch-icon.png", "image": "https://bsvgestora.com.br/img/og-bsv-gestao.jpg", "email": "contato@bsvgestora.com.br", "description": "BSV Gestão de Obras gerencia prazo, custo e qualidade da sua obra e mostra tudo no Vistobra por BSV Gestão de Obras.", "parentOrganization": {"@type": "Organization", "name": "Grupo BSV Holding"}, "knowsAbout": ["Gerenciamento de obras", "Planejamento de obras", "Cronograma CPM", "Diário de obra (RDO)", "Controle de custos de obra"]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" href="fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* fontes hospedadas no próprio site (OFL; licenças em fonts/) */
+@font-face { font-family: "Archivo"; src: url(fonts/archivo-var-latin.woff2) format("woff2"); font-weight: 500 900; font-stretch: 100% 125%; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url(fonts/ibm-plex-sans-var-latin.woff2) format("woff2"); font-weight: 400 600; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fonts/ibm-plex-mono-400-latin.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fonts/ibm-plex-mono-500-latin.woff2) format("woff2"); font-weight: 500; font-display: swap; }
 /* Layout: folha de projeto — coluna de 1180px, cotas e carimbos técnicos marcando cada seção */
 :root {
   --bg: #EEF0EE; --surface: #FFFFFF; --ink: #14201E; --muted: #5A6662; --line: #D4D9D5;
@@ -102,7 +106,7 @@ header.top .btn:not(.primary) { color: #fff; border-color: rgba(255, 255, 255, .
 header.top.aberto .menu-btn span { background: transparent; }
 header.top.aberto .menu-btn span::before { transform: translateY(6px) rotate(45deg); }
 header.top.aberto .menu-btn span::after { transform: translateY(-6px) rotate(-45deg); }
-@media (max-width: 880px) {
+@media (max-width: 1080px) {
   nav.menu { display: none; } header.top .btn { padding: 11px 14px; font-size: 14px; white-space: nowrap; }
   .menu-btn { display: grid; }
   header.top.aberto { background: #090D0F; border-bottom-color: rgba(255, 255, 255, .08); }
@@ -330,6 +334,28 @@ svg .g-grade { stroke: var(--line); stroke-width: 1; }
 .obra p { color: var(--muted); font-size: 14.5px; }
 .obra .area { font: 500 13px var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
 
+
+/* serviços */
+.servicos-faixa { background: var(--surface); }
+.servicos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.servico { position: relative; background: var(--bg); border-radius: var(--radius); padding: 30px 26px 28px; display: grid; gap: 10px; align-content: start; transition: transform .2s ease, box-shadow .2s ease; }
+.servico::before { content: ""; position: absolute; left: 26px; top: 0; width: 36px; height: 3px; border-radius: 0 0 3px 3px; background: var(--orange); }
+.servico:hover { transform: translateY(-3px); box-shadow: 0 22px 40px -28px rgba(19, 34, 30, .45); }
+.servico .n { font: 500 12px/1 var(--mono); letter-spacing: .12em; color: var(--orange-ink); }
+.servico h3 { font-size: 21px; }
+.servico p { color: var(--muted); font-size: 15.5px; }
+@media (max-width: 900px) { .servicos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .servicos { grid-template-columns: minmax(0, 1fr); } }
+/* como começamos (contato) */
+.comeco { margin-top: 56px; }
+.comeco ol { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid rgba(255, 255, 255, .16); }
+.comeco li { padding: 20px 22px 4px 0; display: grid; gap: 8px; align-content: start; }
+.comeco li + li { padding-left: 22px; border-left: 1px solid rgba(255, 255, 255, .12); }
+.comeco .n { font: 800 34px/1 var(--display); font-stretch: 112%; color: transparent; -webkit-text-stroke: 1.2px var(--orange); }
+.comeco strong { color: #fff; font: 700 18px/1.2 var(--display); font-stretch: 105%; }
+.comeco li p { margin: 0; color: #B9C7BF; font-size: 15px; max-width: none; }
+@media (max-width: 900px) { .comeco ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } .comeco li:nth-child(3) { padding-left: 0; border-left: 0; } .comeco li:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, .12); } }
+@media (max-width: 520px) { .comeco ol { grid-template-columns: minmax(0, 1fr); } .comeco li, .comeco li + li { padding-left: 0; border-left: 0; } .comeco li + li { border-top: 1px solid rgba(255, 255, 255, .12); } }
 /* contato */
 .contato { color: #EEF3EE; background:
   radial-gradient(700px 420px at 100% 100%, rgba(120, 52, 12, .5), rgba(120, 52, 12, 0) 70%),
@@ -377,7 +403,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="BSV Gestão de Obras, início"><img src="img/bsv-gestao-branco.svg" alt="BSV Gestão de Obras" width="180" height="74"></a>
     <nav class="menu" id="menu-secoes" aria-label="Seções">
-      <a href="#obras">Obras</a><a href="#campo">Obra real</a><a href="#metodo">Método</a><a href="#video">Vídeo</a><a href="#vistobra">Vistobra</a><a href="#acompanhamento">Curva S</a><a href="#simulador">Simulador</a>
+      <a href="#obras">Obras</a><a href="#servicos">Serviços</a><a href="#campo">Obra real</a><a href="#metodo">Método</a><a href="#video">Vídeo</a><a href="#vistobra">Vistobra</a><a href="#acompanhamento">Curva S</a><a href="#simulador">Simulador</a>
     </nav>
     <div class="topo-acoes">
       <a class="btn primary" href="#contato">Fale com a BSV</a>
@@ -401,8 +427,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
       </div>
       <div class="hero-lente">
         <div class="lente" id="lente" role="img" aria-label="Foto de obra real com uma lente que mostra o painel do Vistobra por cima">
-          <img src="img/obra-5.jpg" alt="" fetchpriority="high">
-          <img class="tela" src="img/painel.jpg" alt="">
+          <img src="img/obra-5.webp" alt="" fetchpriority="high">
+          <img class="tela" src="img/painel.webp" alt="">
           <span class="anel"></span>
           <span class="selo">OBRA REAL · CAMPO</span>
         </div>
@@ -424,15 +450,33 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
         <div class="selo"><div class="n">5 segmentos</div><p>Industrial, logística e armazenagem, hotelaria, comercial e residencial.</p></div>
       </div>
       <div class="obras">
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-09-1.jpg" alt="Sede administrativa em Cubatão" loading="lazy" decoding="async"></figure><div><span class="tipo">Industrial · ferrovia</span><h3>Sede Administrativa e Ferrovia do Grupo Cesari</h3><p>Escritório corporativo e malha ferroviária com 6 mil metros, para até 72 vagões. Cubatão/SP.</p><span class="area">Escritório: 4.000 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-11-1.jpg" alt="Piso industrial em concreto visto do alto" loading="lazy" decoding="async"></figure><div><span class="tipo">Industrial</span><h3>Piso Industrial em Concreto · Ambipar</h3><p>Piso em concreto com sistema de captação de resíduos, na base da Ambipar.</p><span class="area">Guarulhos/SP</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-08-2.jpg" alt="Escritório reformado da Dutra Máquinas" loading="lazy" decoding="async"></figure><div><span class="tipo">Corporativo</span><h3>Sede Administrativa da Dutra Máquinas</h3><p>Reforma do escritório. Parque Novo Mundo, São Paulo/SP.</p><span class="area">850 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-10-1.jpg" alt="Entrada do CAPS em Cubatão" loading="lazy" decoding="async"></figure><div><span class="tipo">Público · PPP</span><h3>Revitalização e Ampliação do CAPS</h3><p>Centro de Atenção Psicossocial, em parceria público-privada com a Prefeitura de Cubatão.</p><span class="area">1.350 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-07-1.jpg" alt="Fachada do Anhembi Flat Hotel" loading="lazy" decoding="async"></figure><div><span class="tipo">Hotelaria</span><h3>Anhembi Flat Hotel</h3><p>Hotel com 240 apartamentos. Santana, São Paulo/SP.</p><span class="area">14.640 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-05-1.jpg" alt="Fachada do Edifício Certacon" loading="lazy" decoding="async"></figure><div><span class="tipo">Comercial</span><h3>Edifício Certacon</h3><p>Prédio comercial com 5 andares. Perdizes, São Paulo/SP.</p><span class="area">1.000 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-06-1.jpg" alt="Fachada do Edifício Los Angeles" loading="lazy" decoding="async"></figure><div><span class="tipo">Residencial</span><h3>Edifício Los Angeles</h3><p>Prédio residencial com 26 apartamentos. Vila Formosa, São Paulo/SP.</p><span class="area">8.295 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-04-1.jpg" alt="Fachada do Edifício Marechal Maison" loading="lazy" decoding="async"></figure><div><span class="tipo">Residencial</span><h3>Edifício Marechal Maison</h3><p>Prédio residencial com 30 apartamentos. Tatuapé, São Paulo/SP.</p><span class="area">8.032 m²</span></div></article>
-        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-12-1.jpg" alt="Galpão logístico visto do alto" loading="lazy" decoding="async"></figure><div><span class="tipo">Logística</span><h3>Sede Administrativa e Galpão Logístico IBL</h3><p>Reforma do escritório corporativo e construção do galpão.</p><span class="area">Galpão: 24.416 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-09-1.webp" alt="Sede administrativa em Cubatão" loading="lazy" decoding="async"></figure><div><span class="tipo">Industrial · ferrovia</span><h3>Sede Administrativa e Ferrovia do Grupo Cesari</h3><p>Escritório corporativo e malha ferroviária com 6 mil metros, para até 72 vagões. Cubatão/SP.</p><span class="area">Escritório: 4.000 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-11-1.webp" alt="Piso industrial em concreto visto do alto" loading="lazy" decoding="async"></figure><div><span class="tipo">Industrial</span><h3>Piso Industrial em Concreto · Ambipar</h3><p>Piso em concreto com sistema de captação de resíduos, na base da Ambipar.</p><span class="area">Guarulhos/SP</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-08-2.webp" alt="Escritório reformado da Dutra Máquinas" loading="lazy" decoding="async"></figure><div><span class="tipo">Corporativo</span><h3>Sede Administrativa da Dutra Máquinas</h3><p>Reforma do escritório. Parque Novo Mundo, São Paulo/SP.</p><span class="area">850 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-10-1.webp" alt="Entrada do CAPS em Cubatão" loading="lazy" decoding="async"></figure><div><span class="tipo">Público · PPP</span><h3>Revitalização e Ampliação do CAPS</h3><p>Centro de Atenção Psicossocial, em parceria público-privada com a Prefeitura de Cubatão.</p><span class="area">1.350 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-07-1.webp" alt="Fachada do Anhembi Flat Hotel" loading="lazy" decoding="async"></figure><div><span class="tipo">Hotelaria</span><h3>Anhembi Flat Hotel</h3><p>Hotel com 240 apartamentos. Santana, São Paulo/SP.</p><span class="area">14.640 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-05-1.webp" alt="Fachada do Edifício Certacon" loading="lazy" decoding="async"></figure><div><span class="tipo">Comercial</span><h3>Edifício Certacon</h3><p>Prédio comercial com 5 andares. Perdizes, São Paulo/SP.</p><span class="area">1.000 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-06-1.webp" alt="Fachada do Edifício Los Angeles" loading="lazy" decoding="async"></figure><div><span class="tipo">Residencial</span><h3>Edifício Los Angeles</h3><p>Prédio residencial com 26 apartamentos. Vila Formosa, São Paulo/SP.</p><span class="area">8.295 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-04-1.webp" alt="Fachada do Edifício Marechal Maison" loading="lazy" decoding="async"></figure><div><span class="tipo">Residencial</span><h3>Edifício Marechal Maison</h3><p>Prédio residencial com 30 apartamentos. Tatuapé, São Paulo/SP.</p><span class="area">8.032 m²</span></div></article>
+        <article class="obra"><figure class="foto"><img src="img/portfolio/obra-12-1.webp" alt="Galpão logístico visto do alto" loading="lazy" decoding="async"></figure><div><span class="tipo">Logística</span><h3>Sede Administrativa e Galpão Logístico IBL</h3><p>Reforma do escritório corporativo e construção do galpão.</p><span class="area">Galpão: 24.416 m²</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao servicos-faixa" id="servicos">
+    <div class="wrap">
+      <div class="cab">
+        <p class="cota">Serviços · <b>o que fazemos</b></p>
+        <h2>O que a BSV Gestão de Obras faz pela sua obra.</h2>
+        <p class="lede">Atuamos ao lado de quem investe, do planejamento à entrega, com engenharia em campo e tudo registrado no Vistobra.</p>
+      </div>
+      <div class="servicos">
+        <article class="servico"><span class="n">01</span><h3>Gerenciamento de obras</h3><p>Coordenamos projetos, fornecedores e execução, da mobilização à entrega, sempre do lado de quem investe.</p></article>
+        <article class="servico"><span class="n">02</span><h3>Planejamento e cronograma</h3><p>EAP, cronograma com caminho crítico e linha de base. A curva S mostra, mês a mês, o previsto contra o realizado.</p></article>
+        <article class="servico"><span class="n">03</span><h3>Acompanhamento de campo</h3><p>Engenheiro na obra, vistorias, diário de obra com fotos e controle da qualidade dos serviços executados.</p></article>
+        <article class="servico"><span class="n">04</span><h3>Suprimentos e compras</h3><p>Cotações comparadas lado a lado, aprovação por alçada e acompanhamento de cada pedido até a entrega na obra.</p></article>
+        <article class="servico"><span class="n">05</span><h3>Medição e custos</h3><p>Medição dos serviços na obra e conferência das notas antes de cada pagamento, com orçado contra realizado.</p></article>
+        <article class="servico"><span class="n">06</span><h3>Compatibilização de projetos</h3><p>Análise conjunta dos projetos para encontrar interferências antes da execução e responder às dúvidas da obra.</p></article>
       </div>
     </div>
   </section>
@@ -446,14 +490,14 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
       </div>
       <div class="galeria" id="galeria" aria-roledescription="carrossel" aria-label="Fotos da obra">
         <div class="gal-palco" id="gal-palco" tabindex="0">
-          <img id="gal-img" src="img/obra-1.jpg" alt="Estrutura de concreto do pavimento superior em execução">
+          <img id="gal-img" loading="lazy" decoding="async" src="img/obra-1.webp" alt="Estrutura de concreto do pavimento superior em execução">
           <div class="gal-leg"><span class="gal-fase" id="gal-fase">FASE 1</span><strong id="gal-tit">Estrutura</strong></div>
           <span class="gal-cont" id="gal-cont">01 / 05</span>
           <button type="button" class="gal-seta ant" id="gal-ant" aria-label="Foto anterior">&#8249;</button>
           <button type="button" class="gal-seta prox" id="gal-prox" aria-label="Próxima foto">&#8250;</button>
           <div class="gal-prog"><i id="gal-prog"></i></div>
         </div>
-        <div class="gal-minis" id="gal-minis"><button type="button" class="gal-mini" data-i="0" aria-label="Fase 1: Estrutura"><img src="img/obra-1.jpg" alt="" loading="lazy"><span>01</span></button><button type="button" class="gal-mini" data-i="1" aria-label="Fase 2: Piso e impermeabilização"><img src="img/obra-2.jpg" alt="" loading="lazy"><span>02</span></button><button type="button" class="gal-mini" data-i="2" aria-label="Fase 3: Alvenaria e revestimento"><img src="img/obra-3.jpg" alt="" loading="lazy"><span>03</span></button><button type="button" class="gal-mini" data-i="3" aria-label="Fase 4: Fachada"><img src="img/obra-4.jpg" alt="" loading="lazy"><span>04</span></button><button type="button" class="gal-mini" data-i="4" aria-label="Fase 5: Fechamento"><img src="img/obra-5.jpg" alt="" loading="lazy"><span>05</span></button></div>
+        <div class="gal-minis" id="gal-minis"><button type="button" class="gal-mini" data-i="0" aria-label="Fase 1: Estrutura"><img src="img/obra-1.webp" alt="" loading="lazy"><span>01</span></button><button type="button" class="gal-mini" data-i="1" aria-label="Fase 2: Piso e impermeabilização"><img src="img/obra-2.webp" alt="" loading="lazy"><span>02</span></button><button type="button" class="gal-mini" data-i="2" aria-label="Fase 3: Alvenaria e revestimento"><img src="img/obra-3.webp" alt="" loading="lazy"><span>03</span></button><button type="button" class="gal-mini" data-i="3" aria-label="Fase 4: Fachada"><img src="img/obra-4.webp" alt="" loading="lazy"><span>04</span></button><button type="button" class="gal-mini" data-i="4" aria-label="Fase 5: Fechamento"><img src="img/obra-5.webp" alt="" loading="lazy"><span>05</span></button></div>
       </div>
       <dialog id="gal-lb" class="gal-lb"><form method="dialog"><button class="gal-fecha" aria-label="Fechar">&times;</button></form><img id="gal-lb-img" alt=""></dialog>
     </div>
@@ -482,7 +526,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
         <p class="lede">Uma apresentação do nosso trabalho e do Vistobra.</p>
       </div>
       <div class="player">
-        <video id="filme" controls playsinline preload="metadata" poster="img/video-capa-bsv.jpg" src="video/bsv-gestao-apresentacao-rev5.mp4" aria-label="Vídeo de apresentação da BSV Gestão de Obras e do Vistobra por BSV Gestão de Obras, com legendas"></video>
+        <video id="filme" controls playsinline preload="none" poster="img/video-capa-bsv.webp" src="video/bsv-gestao-apresentacao-rev5.mp4" aria-label="Vídeo de apresentação da BSV Gestão de Obras e do Vistobra por BSV Gestão de Obras, com legendas"></video>
         <button class="play" type="button" hidden aria-label="Assistir ao vídeo de apresentação"><span></span><em>Assistir · 1 min 20 s</em></button>
       </div>
     </div>
@@ -568,6 +612,10 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
         <div class="linha"><span class="k">E-mail</span><span class="v-grupo"><a class="v" href="mailto:contato@bsvgestora.com.br" style="text-decoration:none">contato@bsvgestora.com.br</a><button class="copiar" type="button" hidden data-copia="contato@bsvgestora.com.br">Copiar</button></span></div>
         <div class="linha"><span class="k">Ferramenta</span><span class="v">Vistobra por BSV Gestão de Obras</span></div>
       </div>
+      <div class="comeco" style="grid-column: 1 / -1">
+        <p class="cota">Como começamos · <b>quatro passos</b></p>
+        <ol><li><span class="n">1</span><strong>Conversa sobre a obra</strong><p>Você conta a fase, o prazo e o que mais preocupa.</p></li><li><span class="n">2</span><strong>Visita e diagnóstico</strong><p>Avaliamos projetos, orçamento e cronograma da obra.</p></li><li><span class="n">3</span><strong>Proposta</strong><p>Escopo, equipe e honorário definidos por escrito.</p></li><li><span class="n">4</span><strong>Início do acompanhamento</strong><p>Cronograma e linha de base no Vistobra e o primeiro diário de obra.</p></li></ol>
+      </div>
       <div class="grupo" style="grid-column: 1 / -1">
         <img src="img/grupo-bsv-holding.svg" alt="Grupo BSV Holding">
         <div class="txt">
@@ -648,15 +696,15 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
 
   /* Capturas do app local com dados de demonstração fictícios; não são obras ou indicadores reais. */
   const ABAS = [
-    { id: 'painel', nome: 'Painel', img: 'painel.jpg', alt: 'Painel executivo do Vistobra com progresso físico, investimento, prazo e valor do empreendimento',
+    { id: 'painel', nome: 'Painel', img: 'painel.webp', alt: 'Painel executivo do Vistobra com progresso físico, investimento, prazo e valor do empreendimento',
       titulo: 'Painel executivo', itens: ['Progresso físico, investimento realizado, prazo e valor da obra na primeira tela.', 'Alertas de desvio de prazo e de orçamento assim que aparecem.', 'Atalhos para lançar RDO, custo, documento ou abrir o Gantt.'] },
-    { id: 'cronograma', nome: 'Cronograma', img: 'cronograma.jpg', alt: 'Cronograma interativo CPM com barras do caminho crítico e acompanhamento por atividade',
+    { id: 'cronograma', nome: 'Cronograma', img: 'cronograma.webp', alt: 'Cronograma interativo CPM com barras do caminho crítico e acompanhamento por atividade',
       titulo: 'Cronograma CPM', itens: ['Gantt com caminho crítico destacado em vermelho.', 'Acompanhamento por atividade da EAP, com responsável e percentual.', 'Saúde financeira da obra ao lado do avanço físico.'] },
-    { id: 'rdo', nome: 'Diário de obra', img: 'rdo.jpg', alt: 'Demonstração do diário de obra com dados fictícios',
+    { id: 'rdo', nome: 'Diário de obra', img: 'rdo.webp', alt: 'Demonstração do diário de obra com dados fictícios',
       titulo: 'Diário de obra (RDO)', itens: ['Demonstração do registro diário: condições do tempo, equipe e atividades.', 'Atividades do dia descritas pelo engenheiro da obra.', 'Fotos de campo anexadas ao próprio diário.'] },
-    { id: 'custos', nome: 'Custos', img: 'custos.jpg', alt: 'Tela de custos da obra com orçamento contratual, realizado, comprometido e saldo',
+    { id: 'custos', nome: 'Custos', img: 'custos.webp', alt: 'Tela de custos da obra com orçamento contratual, realizado, comprometido e saldo',
       titulo: 'Custos da obra', itens: ['Orçamento contratual, realizado, comprometido e saldo disponível.', 'Custo por categoria e fluxo de caixa mensal.', 'Diagnóstico físico-financeiro por atividade (EVM).'] },
-    { id: 'pedidos', nome: 'Pedidos', img: 'pedidos.jpg', alt: 'Demonstração da tela de pedidos com dados fictícios',
+    { id: 'pedidos', nome: 'Pedidos', img: 'pedidos.webp', alt: 'Demonstração da tela de pedidos com dados fictícios',
       titulo: 'Pedidos de material', itens: ['Solicitações de compra vinculadas à obra.', 'Especificação dos itens e data de necessidade.', 'Acompanhamento da situação de cada pedido.'] },
   ];
   const abas = document.getElementById('abas'), painel = document.getElementById('painel-aba');
@@ -851,7 +899,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
 
   /* galeria da obra: palco grande, miniaturas, setas, teclado, toque e ampliar */
   (() => {
-    const fotos = [{"src": "img/obra-1.jpg", "alt": "Estrutura de concreto do pavimento superior em execução", "fase": "FASE 1", "tit": "Estrutura"}, {"src": "img/obra-2.jpg", "alt": "Preparação do piso com lona e armadura", "fase": "FASE 2", "tit": "Piso e impermeabilização"}, {"src": "img/obra-3.jpg", "alt": "Equipe executando revestimento de parede em andaime", "fase": "FASE 3", "tit": "Alvenaria e revestimento"}, {"src": "img/obra-4.jpg", "alt": "Fachada do galpão com painéis instalados", "fase": "FASE 4", "tit": "Fachada"}, {"src": "img/obra-5.jpg", "alt": "Galpão com fachada concluída e pátio", "fase": "FASE 5", "tit": "Fechamento"}];
+    const fotos = [{"src": "img/obra-1.webp", "alt": "Estrutura de concreto do pavimento superior em execução", "fase": "FASE 1", "tit": "Estrutura"}, {"src": "img/obra-2.webp", "alt": "Preparação do piso com lona e armadura", "fase": "FASE 2", "tit": "Piso e impermeabilização"}, {"src": "img/obra-3.webp", "alt": "Equipe executando revestimento de parede em andaime", "fase": "FASE 3", "tit": "Alvenaria e revestimento"}, {"src": "img/obra-4.webp", "alt": "Fachada do galpão com painéis instalados", "fase": "FASE 4", "tit": "Fachada"}, {"src": "img/obra-5.webp", "alt": "Galpão com fachada concluída e pátio", "fase": "FASE 5", "tit": "Fechamento"}];
     const palco = document.getElementById('gal-palco'), img = document.getElementById('gal-img');
     const minis = [...document.querySelectorAll('.gal-mini')], prog = document.getElementById('gal-prog');
     const lb = document.getElementById('gal-lb'), lbImg = document.getElementById('gal-lb-img');
@@ -900,7 +948,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
   /* entrada suave das seções e cards ao rolar: só esconde o que está abaixo da tela ao abrir; a rolagem revela */
   (() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const alvos = [...document.querySelectorAll('main .cab, .passo, .obra, .selo, .player, .janela, .grafico, .indicadores, .sim, .galeria, .cartao, .grupo')];
+    const alvos = [...document.querySelectorAll('main .cab, .servico, .comeco li, .passo, .obra, .selo, .player, .janela, .grafico, .indicadores, .sim, .galeria, .cartao, .grupo')];
     alvos.forEach(el => {
       const irmaos = [...el.parentElement.children].filter(x => x.className === el.className);
       if (irmaos.length > 1) el.style.setProperty('--d', (irmaos.indexOf(el) % 3) * 0.09 + 's');
@@ -931,7 +979,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
     mb.addEventListener('click', () => { const a = topo.classList.toggle('aberto'); mb.setAttribute('aria-expanded', a); mb.setAttribute('aria-label', a ? 'Fechar menu' : 'Abrir menu'); });
     document.querySelectorAll('nav.menu a').forEach(a => a.addEventListener('click', fecha));
     addEventListener('keydown', e => { if (e.key === 'Escape' && topo.classList.contains('aberto')) { fecha(); mb.focus(); } });
-    addEventListener('resize', () => innerWidth > 880 && fecha());
+    addEventListener('resize', () => innerWidth > 1080 && fecha());
   })();
 
   /* vídeo: play próprio; sem JS o vídeo continua com os controles do navegador */
