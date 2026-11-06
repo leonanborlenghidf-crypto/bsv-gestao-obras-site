@@ -2,6 +2,21 @@
 <html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BSV Gestão de Obras</title>
 <meta name="description" content="BSV Gestão de Obras gerencia prazo, custo e qualidade da sua obra e mostra tudo no Vistobra por BSV Gestão de Obras.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#090D0F">
+<link rel="canonical" href="https://bsvgestora.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="BSV Gestão de Obras">
+<meta property="og:url" content="https://bsvgestora.com.br/">
+<meta property="og:title" content="BSV Gestão de Obras · Gestão de obras que você vê">
+<meta property="og:description" content="Prazo, custo e qualidade da sua obra, com diário de obra, cronograma e custos no Vistobra por BSV Gestão de Obras.">
+<meta property="og:image" content="https://bsvgestora.com.br/img/og-bsv-gestao.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BSV Gestão de Obras: gestão de obras que você vê">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -32,7 +47,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--body); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--body); }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
 .wrap { max-width: 1180px; margin-inline: auto; padding-inline: 24px; }
@@ -55,10 +70,13 @@ p { margin: 0; }
 
 /* cabeçalho */
 header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(9, 13, 15, .94); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, .08); }
+header.top { transition: background-color .35s ease, border-color .35s ease; }
+/* no topo o cabeçalho fica transparente sobre o hero; ganha fundo quando o logo grande sai da tela */
+header.top:not(.marca) { background: transparent; border-bottom-color: transparent; backdrop-filter: none; }
 header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; opacity: 0; transform: translateY(-4px); transition: opacity .5s ease, transform .5s ease; }
 header.top.marca .brand, footer .brand { opacity: 1; transform: none; }
-.brand img { width: 215px; height: auto; max-width: 47vw; }
+.brand img { width: 180px; height: auto; max-width: 47vw; }
 nav.menu { display: flex; gap: 22px; font-size: 15px; }
 nav.menu a { text-decoration: none; color: #B9C7BF; }
 nav.menu a:hover { color: #fff; }
@@ -66,7 +84,7 @@ header.top .btn:not(.primary) { color: #fff; border-color: rgba(255, 255, 255, .
 @media (max-width: 880px) { nav.menu { display: none; } header.top .btn { padding: 11px 14px; font-size: 14px; } }
 
 /* abertura */
-.hero { position: relative; overflow: hidden; color: #EEF3EE; background:
+.hero { position: relative; overflow: hidden; color: #EEF3EE; margin-top: calc(-1 * var(--hdr, 100px)); background:
   radial-gradient(900px 520px at 18% 30%, rgba(25, 48, 56, .95), rgba(25, 48, 56, 0) 70%),
   radial-gradient(760px 520px at 92% 100%, rgba(120, 52, 12, .55), rgba(120, 52, 12, 0) 70%),
   radial-gradient(520px 360px at 4% 0%, rgba(58, 72, 14, .35), rgba(58, 72, 14, 0) 70%),
@@ -76,11 +94,11 @@ header.top .btn:not(.primary) { color: #fff; border-color: rgba(255, 255, 255, .
 .hero .btn:not(.primary) { color: #fff; border-color: rgba(255, 255, 255, .5); }
 .hero .ex { color: #9DB0A6; }
 #grade { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 56px 72px; min-height: min(88vh, 760px); }
-.hero h1 { font-size: clamp(34px, 4.4vw, 58px); font-weight: 900; font-stretch: 116%; margin-block: 28px 18px; color: #fff; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: calc(var(--hdr, 100px) + 32px) 88px; min-height: min(92vh, 820px); }
+.hero h1 { font-size: clamp(38px, 5vw, 66px); font-weight: 900; font-stretch: 116%; margin-block: 28px 18px; color: #fff; }
 .hero h1 em { font-style: normal; color: var(--orange); }
 .hero .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 40px 56px; gap: 32px; min-height: 0; } }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: calc(var(--hdr, 80px) + 16px) 56px; gap: 32px; min-height: 0; } }
 
 /* logo animado */
 .logo-anim { display: block; width: min(100%, 520px); height: auto; overflow: visible; cursor: pointer; filter: drop-shadow(0 0 0 rgba(255, 106, 13, 0)); animation: respira 5s ease-in-out 3s infinite; }
@@ -120,7 +138,9 @@ header.top .btn:not(.primary) { color: #fff; border-color: rgba(255, 255, 255, .
 @media (max-width: 520px) { .passos { grid-template-columns: minmax(0, 1fr); } .passo, .passo + .passo { padding-left: 0; border-right: 0; } .passo + .passo { border-top: 1px solid var(--line); } }
 
 /* vídeo */
-.faixa-video { background: var(--vb-bg); color: #EEF3EE; }
+.faixa-video, .escuro { background: var(--vb-bg); color: #EEF3EE; }
+.escuro .cota { color: #9DB0A6; } .escuro .lede { color: #B9C7BF; } .escuro h2 { color: #fff; }
+.escuro .gal-palco { box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
 .faixa-video .cota { color: #9DB0A6; }
 .faixa-video .lede { color: #B9C7BF; }
 .video-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr); gap: 40px; align-items: center; }
@@ -136,8 +156,12 @@ header.top .btn:not(.primary) { color: #fff; border-color: rgba(255, 255, 255, .
 .abas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .abas button { font: 600 15px/1 var(--body); padding: 12px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
 .abas button[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-.painel-aba { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 36px; align-items: start; }
-@media (max-width: 900px) { .painel-aba { grid-template-columns: minmax(0, 1fr); } }
+.painel-aba { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
+.texto-aba { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2.2fr); gap: 12px 36px; align-items: start; }
+.texto-aba ul { margin: 0 !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px !important; }
+@media (max-width: 900px) { .texto-aba { grid-template-columns: minmax(0, 1fr); } .texto-aba ul { grid-template-columns: minmax(0, 1fr); gap: 10px !important; } }
+.janela { box-shadow: 0 30px 70px -40px rgba(19, 34, 30, .45); }
+.janela img { cursor: zoom-in; }
 .janela { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
 .janela .barra { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
 .janela .barra i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
@@ -247,7 +271,8 @@ svg .g-grade { stroke: var(--line); stroke-width: 1; }
 .obras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 @media (max-width: 900px) { .obras { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .obras { grid-template-columns: minmax(0, 1fr); } }
-.obra { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.obra { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; min-width: 0; transition: transform .2s ease, box-shadow .2s ease; }
+.obra:hover { transform: translateY(-3px); box-shadow: 0 22px 40px -26px rgba(19, 34, 30, .5); }
 .obra img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
 .obra div { padding: 16px 18px 18px; display: grid; gap: 6px; }
 .obra .tipo { font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--orange-ink); }
@@ -265,6 +290,7 @@ svg .g-grade { stroke: var(--line); stroke-width: 1; }
 @media (max-width: 900px) { .contato-grid { grid-template-columns: minmax(0, 1fr); } }
 .contato h2 { color: #fff; }
 .contato p { color: #B9C7BF; margin-top: 16px; max-width: 54ch; }
+.contato .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .cartao { background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .1); border-radius: var(--radius); padding: 24px; display: grid; gap: 14px; }
 .cartao .linha { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,.12); padding-bottom: 12px; }
 .cartao .linha:last-of-type { border-bottom: 0; }
@@ -279,16 +305,21 @@ svg .g-grade { stroke: var(--line); stroke-width: 1; }
 .grupo .marcas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .grupo .marcas span { font: 500 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 8px 10px; border: 1px solid rgba(255, 255, 255, .22); border-radius: 6px; color: #D5DFD8; }
 .grupo .marcas span.atual { border-color: var(--orange); color: #F5A55F; }
-footer { padding-block: 36px; border-top: 1px solid var(--line); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; color: var(--muted); font-size: 14px; }
+footer { padding-block: 32px; background: #0A0F10; border-top: 1px solid rgba(255, 255, 255, .08); }
+footer .brand img { width: 170px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; color: #9DB0A6; font-size: 14px; }
 @media (prefers-reduced-motion: reduce) { .btn, .barra-l .t i { transition: none; } }
+/* entrada suave ao rolar: a classe só é posta pelo script, então sem JS tudo aparece normal */
+.revela { opacity: 0; transform: translateY(22px); transition: opacity .7s ease var(--d, 0s), transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0s); }
+.revela.visto { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .revela { opacity: 1; transform: none; transition: none; } }
 </style>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#inicio" aria-label="BSV Gestão de Obras, início"><img src="img/bsv-gestao-branco.svg" alt="BSV Gestão de Obras"></a>
     <nav class="menu" aria-label="Seções">
-      <a href="#metodo">Método</a><a href="#video">Vídeo</a><a href="#vistobra">Vistobra</a><a href="#acompanhamento">Curva S</a><a href="#simulador">Simulador</a><a href="#campo">Obra real</a><a href="#obras">Obras</a>
+      <a href="#obras">Obras</a><a href="#campo">Obra real</a><a href="#metodo">Método</a><a href="#video">Vídeo</a><a href="#vistobra">Vistobra</a><a href="#acompanhamento">Curva S</a><a href="#simulador">Simulador</a>
     </nav>
     <a class="btn primary" href="#contato">Fale com a BSV</a>
   </div>
@@ -304,7 +335,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
         <p class="lede">A BSV Gestão de Obras gerencia prazo, custo e qualidade da sua obra e mostra tudo no Vistobra por BSV Gestão de Obras: diário de obra com fotos, cronograma, custos e previsão de atraso no mesmo lugar.</p>
         <div class="acoes">
           <a class="btn primary" href="#contato">Agendar uma conversa</a>
-          <a class="btn" href="#video">Conhecer a BSV</a>
+          <a class="btn" href="#obras">Conhecer a BSV</a>
         </div>
       </div>
       <div class="hero-lente">
@@ -316,6 +347,54 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
         </div>
         <p class="lente-legenda ex">Passe o mouse ou arraste o dedo: a obra no campo, os números no Vistobra.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="secao" id="obras">
+    <div class="wrap">
+      <div class="cab">
+        <p class="cota">Portfólio · <b>obras executadas</b></p>
+        <h2>Mais de três décadas entregando obra.</h2>
+        <p class="lede">Do projeto à execução, em obras industriais, logísticas, hoteleiras, comerciais e residenciais.</p>
+      </div>
+      <div class="selos">
+        <div class="selo"><div class="n">Desde 1991</div><p>Começou em construção estrutural e alvenaria; hoje atende do projeto à entrega.</p></div>
+        <div class="selo"><div class="n">+300.000 m²</div><p>Em construção e fiscalização no acervo técnico.</p></div>
+        <div class="selo"><div class="n">5 segmentos</div><p>Industrial, logística e armazenagem, hotelaria, comercial e residencial.</p></div>
+      </div>
+      <div class="obras">
+        <article class="obra"><img src="img/portfolio/obra-12-1.jpg" alt="Galpão logístico visto do alto" loading="lazy"><div><span class="tipo">Logística</span><h3>Sede Administrativa e Galpão Logístico IBL</h3><p>Reforma do escritório corporativo e construção do galpão.</p><span class="area">Galpão: 24.416 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-09-1.jpg" alt="Sede administrativa em Cubatão" loading="lazy"><div><span class="tipo">Industrial · ferrovia</span><h3>Sede Administrativa e Ferrovia do Grupo Cesari</h3><p>Escritório corporativo e malha ferroviária com 6 mil metros, para até 72 vagões. Cubatão/SP.</p><span class="area">Escritório: 4.000 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-07-1.jpg" alt="Fachada do Anhembi Flat Hotel" loading="lazy"><div><span class="tipo">Hotelaria</span><h3>Anhembi Flat Hotel</h3><p>Hotel com 240 apartamentos. Santana, São Paulo/SP.</p><span class="area">14.640,00 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-06-1.jpg" alt="Fachada do Edifício Los Angeles" loading="lazy"><div><span class="tipo">Residencial</span><h3>Edifício Los Angeles</h3><p>Prédio residencial com 26 apartamentos. Vila Formosa, São Paulo/SP.</p><span class="area">8.295,04 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-04-1.jpg" alt="Fachada do Edifício Marechal Maison" loading="lazy"><div><span class="tipo">Residencial</span><h3>Edifício Marechal Maison</h3><p>Prédio residencial com 30 apartamentos. Tatuapé, São Paulo/SP.</p><span class="area">8.031,68 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-10-1.jpg" alt="Entrada do CAPS em Cubatão" loading="lazy"><div><span class="tipo">Público · PPP</span><h3>Revitalização e Ampliação do CAPS</h3><p>Centro de Atenção Psicossocial, em parceria público-privada com a Prefeitura de Cubatão.</p><span class="area">1.350 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-05-1.jpg" alt="Fachada do Edifício Certacon" loading="lazy"><div><span class="tipo">Comercial</span><h3>Edifício Certacon</h3><p>Prédio comercial com 5 andares. Perdizes, São Paulo/SP.</p><span class="area">1.000 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-08-2.jpg" alt="Escritório reformado da Dutra Máquinas" loading="lazy"><div><span class="tipo">Corporativo</span><h3>Sede Administrativa da Dutra Máquinas</h3><p>Reforma do escritório. Parque Novo Mundo, São Paulo/SP.</p><span class="area">850 m²</span></div></article>
+        <article class="obra"><img src="img/portfolio/obra-11-1.jpg" alt="Piso industrial em concreto visto do alto" loading="lazy"><div><span class="tipo">Industrial</span><h3>Piso Industrial em Concreto · Ambipar</h3><p>Piso em concreto com captação de resíduos na base de Guarulhos.</p><span class="area">Guarulhos/SP</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao escuro" id="campo">
+    <div class="wrap">
+      <div class="cab">
+        <p class="cota">Obra real · <b>banco de fotos</b></p>
+        <h2>Uma obra acompanhada de perto.</h2>
+        <p class="lede">Obra industrial gerenciada pela BSV Gestão de Obras em 2026, da estrutura à fachada. Navegue pelas fases ou clique na foto para ampliar.</p>
+      </div>
+      <div class="galeria" id="galeria" aria-roledescription="carrossel" aria-label="Fotos da obra">
+        <div class="gal-palco" id="gal-palco" tabindex="0">
+          <img id="gal-img" src="img/obra-1.jpg" alt="Estrutura de concreto do pavimento superior em execução">
+          <div class="gal-leg"><span class="gal-fase" id="gal-fase">FASE 1</span><strong id="gal-tit">Estrutura</strong></div>
+          <span class="gal-cont" id="gal-cont">01 / 05</span>
+          <button type="button" class="gal-seta ant" id="gal-ant" aria-label="Foto anterior">&#8249;</button>
+          <button type="button" class="gal-seta prox" id="gal-prox" aria-label="Próxima foto">&#8250;</button>
+          <div class="gal-prog"><i id="gal-prog"></i></div>
+        </div>
+        <div class="gal-minis" id="gal-minis"><button type="button" class="gal-mini" data-i="0" aria-label="Fase 1: Estrutura"><img src="img/obra-1.jpg" alt="" loading="lazy"><span>01</span></button><button type="button" class="gal-mini" data-i="1" aria-label="Fase 2: Piso e impermeabilização"><img src="img/obra-2.jpg" alt="" loading="lazy"><span>02</span></button><button type="button" class="gal-mini" data-i="2" aria-label="Fase 3: Alvenaria e revestimento"><img src="img/obra-3.jpg" alt="" loading="lazy"><span>03</span></button><button type="button" class="gal-mini" data-i="3" aria-label="Fase 4: Fachada"><img src="img/obra-4.jpg" alt="" loading="lazy"><span>04</span></button><button type="button" class="gal-mini" data-i="4" aria-label="Fase 5: Fechamento"><img src="img/obra-5.jpg" alt="" loading="lazy"><span>05</span></button></div>
+      </div>
+      <dialog id="gal-lb" class="gal-lb"><form method="dialog"><button class="gal-fecha" aria-label="Fechar">&times;</button></form><img id="gal-lb-img" alt=""></dialog>
     </div>
   </section>
 
@@ -414,60 +493,13 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
     </div>
   </section>
 
-  <section class="secao" id="campo" style="padding-top:24px">
-    <div class="wrap">
-      <div class="cab">
-        <p class="cota">Obra real · <b>banco de fotos</b></p>
-        <h2>Uma obra acompanhada de perto.</h2>
-        <p class="lede">Obra industrial gerenciada pela BSV Gestão de Obras em 2026, da estrutura à fachada. Navegue pelas fases ou clique na foto para ampliar.</p>
-      </div>
-      <div class="galeria" id="galeria" aria-roledescription="carrossel" aria-label="Fotos da obra">
-        <div class="gal-palco" id="gal-palco" tabindex="0">
-          <img id="gal-img" src="img/obra-1.jpg" alt="Estrutura de concreto do pavimento superior em execução">
-          <div class="gal-leg"><span class="gal-fase" id="gal-fase">FASE 1</span><strong id="gal-tit">Estrutura</strong></div>
-          <span class="gal-cont" id="gal-cont">01 / 05</span>
-          <button type="button" class="gal-seta ant" id="gal-ant" aria-label="Foto anterior">&#8249;</button>
-          <button type="button" class="gal-seta prox" id="gal-prox" aria-label="Próxima foto">&#8250;</button>
-          <div class="gal-prog"><i id="gal-prog"></i></div>
-        </div>
-        <div class="gal-minis" id="gal-minis"><button type="button" class="gal-mini" data-i="0" aria-label="Fase 1: Estrutura"><img src="img/obra-1.jpg" alt="" loading="lazy"><span>01</span></button><button type="button" class="gal-mini" data-i="1" aria-label="Fase 2: Piso e impermeabilização"><img src="img/obra-2.jpg" alt="" loading="lazy"><span>02</span></button><button type="button" class="gal-mini" data-i="2" aria-label="Fase 3: Alvenaria e revestimento"><img src="img/obra-3.jpg" alt="" loading="lazy"><span>03</span></button><button type="button" class="gal-mini" data-i="3" aria-label="Fase 4: Fachada"><img src="img/obra-4.jpg" alt="" loading="lazy"><span>04</span></button><button type="button" class="gal-mini" data-i="4" aria-label="Fase 5: Fechamento"><img src="img/obra-5.jpg" alt="" loading="lazy"><span>05</span></button></div>
-      </div>
-      <dialog id="gal-lb" class="gal-lb"><form method="dialog"><button class="gal-fecha" aria-label="Fechar">&times;</button></form><img id="gal-lb-img" alt=""></dialog>
-    </div>
-  </section>
-
-  <section class="secao" id="obras" style="padding-top:24px">
-    <div class="wrap">
-      <div class="cab">
-        <p class="cota">Portfólio · <b>obras executadas</b></p>
-        <h2>Mais de três décadas entregando obra.</h2>
-        <p class="lede">Do projeto à execução, em obras industriais, logísticas, hoteleiras, comerciais e residenciais.</p>
-      </div>
-      <div class="selos">
-        <div class="selo"><div class="n">Desde 1991</div><p>Começou em construção estrutural e alvenaria; hoje atende do projeto à entrega.</p></div>
-        <div class="selo"><div class="n">+300.000 m²</div><p>Em construção e fiscalização no acervo técnico.</p></div>
-        <div class="selo"><div class="n">5 segmentos</div><p>Industrial, logística e armazenagem, hotelaria, comercial e residencial.</p></div>
-      </div>
-      <div class="obras">
-        <article class="obra"><img src="img/portfolio/obra-12-1.jpg" alt="Galpão logístico visto do alto" loading="lazy"><div><span class="tipo">Logística</span><h3>Sede Administrativa e Galpão Logístico IBL</h3><p>Reforma do escritório corporativo e construção do galpão.</p><span class="area">Galpão: 24.416 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-09-1.jpg" alt="Sede administrativa em Cubatão" loading="lazy"><div><span class="tipo">Industrial · ferrovia</span><h3>Sede Administrativa e Ferrovia do Grupo Cesari</h3><p>Escritório corporativo e malha ferroviária com 6 mil metros, para até 72 vagões. Cubatão/SP.</p><span class="area">Escritório: 4.000 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-07-1.jpg" alt="Fachada do Anhembi Flat Hotel" loading="lazy"><div><span class="tipo">Hotelaria</span><h3>Anhembi Flat Hotel</h3><p>Hotel com 240 apartamentos. Santana, São Paulo/SP.</p><span class="area">14.640,00 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-06-1.jpg" alt="Fachada do Edifício Los Angeles" loading="lazy"><div><span class="tipo">Residencial</span><h3>Edifício Los Angeles</h3><p>Prédio residencial com 26 apartamentos. Vila Formosa, São Paulo/SP.</p><span class="area">8.295,04 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-04-1.jpg" alt="Fachada do Edifício Marechal Maison" loading="lazy"><div><span class="tipo">Residencial</span><h3>Edifício Marechal Maison</h3><p>Prédio residencial com 30 apartamentos. Tatuapé, São Paulo/SP.</p><span class="area">8.031,68 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-10-1.jpg" alt="Entrada do CAPS em Cubatão" loading="lazy"><div><span class="tipo">Público · PPP</span><h3>Revitalização e Ampliação do CAPS</h3><p>Centro de Atenção Psicossocial, em parceria público-privada com a Prefeitura de Cubatão.</p><span class="area">1.350 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-05-1.jpg" alt="Fachada do Edifício Certacon" loading="lazy"><div><span class="tipo">Comercial</span><h3>Edifício Certacon</h3><p>Prédio comercial com 5 andares. Perdizes, São Paulo/SP.</p><span class="area">1.000 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-08-2.jpg" alt="Escritório reformado da Dutra Máquinas" loading="lazy"><div><span class="tipo">Corporativo</span><h3>Sede Administrativa da Dutra Máquinas</h3><p>Reforma do escritório. Parque Novo Mundo, São Paulo/SP.</p><span class="area">850 m²</span></div></article>
-        <article class="obra"><img src="img/portfolio/obra-11-1.jpg" alt="Piso industrial em concreto visto do alto" loading="lazy"><div><span class="tipo">Industrial</span><h3>Piso Industrial em Concreto · Ambipar</h3><p>Piso em concreto com captação de resíduos na base de Guarulhos.</p><span class="area">Guarulhos/SP</span></div></article>
-      </div>
-    </div>
-  </section>
-
   <section class="secao contato" id="contato">
     <div class="wrap contato-grid">
       <div>
         <p class="cota">Contato</p>
         <h2>Vamos olhar a sua obra juntos.</h2>
         <p>Conte em que fase está a sua obra. A BSV Gestão de Obras mostra como faria o acompanhamento e o que você passaria a ver no Vistobra.</p>
+        <div class="acoes"><a class="btn primary" href="mailto:contato@bsvgestora.com.br?subject=Quero%20conversar%20sobre%20a%20minha%20obra">Enviar um e-mail</a></div>
       </div>
       <div class="cartao">
         <div class="linha"><span class="k">Empresa</span><span class="v">BSV Gestão de Obras</span></div>
@@ -487,7 +519,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#inicio"><picture><source srcset="img/bsv-gestao-branco.svg" media="(prefers-color-scheme: dark)"><img src="img/bsv-gestao.svg" alt="BSV Gestão de Obras"></picture></a>
+    <a class="brand" href="#inicio"><img src="img/bsv-gestao-branco.svg" alt="BSV Gestão de Obras"></a>
     <span>Vistobra por BSV Gestão de Obras é a ferramenta de gestão que a BSV Gestão de Obras usa nas obras que gerencia. © 2026 BSV Gestão de Obras</span>
   </div>
 </footer>
@@ -556,7 +588,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
     abas.querySelectorAll('button').forEach(b => { const s = b.dataset.id === id; b.setAttribute('aria-selected', s); b.tabIndex = s ? 0 : -1; if (s && foco) b.focus(); });
     painel.setAttribute('aria-labelledby', 'aba-' + id);
     painel.innerHTML = `
-      <div><div class="janela"><div class="barra"><i></i><i></i><i></i></div><img src="img/${a.img}" alt="${a.alt}" loading="lazy"></div>
+      <div><div class="janela"><div class="barra"><i></i><i></i><i></i></div><img src="img/${a.img}" alt="${a.alt}" loading="lazy" title="Clique para ampliar"></div>
       ${a.fotos ? `<div class="fotos-rdo">${[1, 2, 3, 4].map(n => `<img src="img/rdo-foto-${n}.jpg" alt="Foto de campo ${n} do diário de obra" loading="lazy">`).join('')}</div>` : ''}</div>
       <div class="texto-aba"><h3>${a.titulo}</h3><ul>${a.itens.map(i => `<li><span>${i}</span></li>`).join('')}</ul></div>`;
   }
@@ -571,6 +603,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
     abas.appendChild(b);
   });
   mostra('painel');
+  painel.addEventListener('click', e => {
+    const im = e.target.closest('.janela img'); if (!im) return;
+    const lb = document.getElementById('gal-lb'), li = document.getElementById('gal-lb-img');
+    li.src = im.src; li.alt = im.alt; lb.showModal();
+  });
 
   /* Curva S de exemplo */
   const MESES = ['Mar/26', 'Abr/26', 'Mai/26', 'Jun/26', 'Jul/26', 'Ago/26', 'Set/26', 'Out/26', 'Nov/26', 'Dez/26'];
@@ -731,6 +768,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
   (() => {
     const logo = document.getElementById('logo-anim'), topo = document.querySelector('header.top');
     new IntersectionObserver(([en]) => topo.classList.toggle('marca', !en.isIntersecting), { threshold: 0.2 }).observe(logo);
+    const hdr = () => document.documentElement.style.setProperty('--hdr', topo.offsetHeight + 'px'); hdr(); addEventListener('resize', hdr);
     logo.addEventListener('click', () => { logo.classList.remove('toca'); void logo.getBoundingClientRect(); logo.classList.add('toca'); });
   })();
 
@@ -781,4 +819,21 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: 
     ir(0);
   })();
 })();
+
+  /* entrada suave das seções e cards ao rolar: só esconde o que está abaixo da tela ao abrir; a rolagem revela */
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const alvos = [...document.querySelectorAll('main .cab, .passo, .obra, .selo, .player, .janela, .grafico, .indicadores, .sim, .galeria, .cartao, .grupo')];
+    alvos.forEach(el => {
+      const irmaos = [...el.parentElement.children].filter(x => x.className === el.className);
+      if (irmaos.length > 1) el.style.setProperty('--d', (irmaos.indexOf(el) % 3) * 0.09 + 's');
+    });
+    let pend = alvos.filter(el => el.getBoundingClientRect().top > innerHeight * 0.9);
+    pend.forEach(el => el.classList.add('revela'));
+    const checa = () => {
+      pend = pend.filter(el => { if (el.getBoundingClientRect().top < innerHeight * 0.92) { el.classList.add('visto'); return false; } return true; });
+      if (!pend.length) { removeEventListener('scroll', checa); removeEventListener('resize', checa); }
+    };
+    addEventListener('scroll', checa, { passive: true }); addEventListener('resize', checa);
+  })();
 </script>
